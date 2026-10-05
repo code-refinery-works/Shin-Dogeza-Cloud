@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SHIN-DOGEZA Cloud｜全自動責任転嫁・謝罪支援SaaS</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ===== EMERGENCY BUTTON ===== -->
+<button id="emergencyBtn" title="緊急脱出 (Ctrl+Boss)">🚨</button>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar" id="navbar">
+  <div class="nav-brand">
+    🙇 SHIN-DOGEZA <span style="font-size:0.65rem;opacity:0.7;">Cloud™</span>
+  </div>
+  <div class="nav-links">
+    <a href="#features">機能</a>
+    <a href="#kpi">KPI</a>
+    <a href="#schedule">スケジュール</a>
+    <a href="#pricing">料金</a>
+  </div>
+  <button class="nav-cta" onclick="show503()">無料で炎上を回避する</button>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="hero">
+  <div class="hero-badge">🔥 炎上案件対応率 No.1 SaaS（当社調べ）</div>
+  <h1 class="hero-title">
+    謝るな。<br><span class="hero-title-accent">やり過ごせ。</span>
+  </h1>
+  <p class="hero-subtitle">
+    SHIN-DOGEZA Cloud は、あなたの大切なエネルギーを<br>
+    「反省」ではなく「生存」に最適化する、次世代型<br>
+    <strong>全自動責任転嫁・謝罪支援 SaaS</strong> です。
+  </p>
+  <div class="hero-kpi-row">
+    <div class="hero-kpi-item">
+      <div class="hero-kpi-num">99.9<small>%</small></div>
+      <div class="hero-kpi-label">SLA（月曜除く）</div>
+    </div>
+    <div class="hero-kpi-item">
+      <div class="hero-kpi-num">0.2<small>秒</small></div>
+      <div class="hero-kpi-label">エスケープレイテンシー</div>
+    </div>
+    <div class="hero-kpi-item">
+      <div class="hero-kpi-num">80<small>%減</small></div>
+      <div class="hero-kpi-label">年間胃潰瘍発生率</div>
+    </div>
+  </div>
+  <div class="cta-buttons">
+    <button class="btn-primary" onclick="scrollToFeatures()">✨ 機能を見る</button>
+    <button class="btn-secondary" onclick="activateBossScreen()">🖥️ 上司が来た！（デモ）</button>
+  </div>
+  <div class="hero-scroll-hint">↓ スクロールして現実から逃げる</div>
+</section>
+
+<!-- ===== TICKER ===== -->
+<div class="ticker-wrap">
+  <div class="ticker-track" id="ticker"></div>
+</div>
+
+<!-- ===== FEATURES ===== -->
+<section class="section" id="features">
+  <div class="section-label">CORE FEATURES</div>
+  <h2 class="section-title">4つの生存戦略エンジン</h2>
+  <p class="section-sub">テクノロジーの力で、あなたの「責任感」を合理的にアウトソースします。</p>
+
+  <div class="features-grid">
+
+    <!-- FEATURE 1: Ex-Cuse Engine -->
+    <div class="feature-card" id="excuseCard">
+      <div class="feature-icon">🤖</div>
+      <div class="feature-tag">AI POWERED</div>
+      <h3 class="feature-title">全自動言い訳（Ex-Cuse）エンジン</h3>
+      <p class="feature-desc">
+        トラブル発生時、AIが瞬時に「もっともらしいが誰も反論できない不可抗力」を生成。
+        太陽フレアから鳩の進路妨害まで、あらゆる免責事由をカバー。
+      </p>
+      <div class="excuse-generator">
+        <div class="excuse-row">
+          <label>やらかしレベル</label>
+          <div class="level-buttons" id="levelBtns">
+            <button class="level-btn active" data-level="1" onclick="setLevel(1)">1</button>
+            <button class="level-btn" data-level="2" onclick="setLevel(2)">2</button>
+            <button class="level-btn" data-level="3" onclick="setLevel(3)">3</button>
+            <button class="level-btn" data-level="4" onclick="setLevel(4)">4</button>
+            <button class="level-btn level-btn-5" data-level="5" onclick="setLevel(5)">5🔥</button>
+          </div>
+        </div>
+        <div class="excuse-row">
+          <label>相手の役職</label>
+          <select id="roleSelect" class="excuse-select">
+            <option value="課長">課長</option>
+            <option value="部長">部長</option>
+            <option value="クライアント">クライアント</option>
+            <option value="監査役">監査役</option>
+          </select>
+        </div>
+        <button class="btn-generate" onclick="generateExcuse()">⚡ 言い訳を生成する</button>
+        <div class="excuse-output" id="excuseOutput">
+          <div class="excuse-output-label">生成された言い訳：</div>
+          <div class="excuse-text" id="excuseText">ここに神の言い訳が降臨します。</div>
+          <button class="btn-copy" id="copyBtn" onclick="copyExcuse()" style="display:none;">📋 コピーして使う</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- FEATURE 2: Dogeza Simulator -->
+    <div class="feature-card" id="dogezaCard">
+      <div class="feature-icon">🎥</div>
+      <div class="feature-tag">REALTIME AI</div>
+      <h3 class="feature-title">AI土下座シミュレーター</h3>
+      <p class="feature-desc">
+        Webカメラで「謝罪の角度」をリアルタイム解析・採点。
+        S ランク「プロの詫び」を達成すると厳かな BGM がフェードイン。
+      </p>
+      <div class="dogeza-sim">
+        <div class="dogeza-angle-display">
+          <div class="dogeza-circle">
+            <div class="dogeza-needle" id="dogezaNeedle"></div>
+            <div class="dogeza-center-dot"></div>
+          </div>
+          <div class="dogeza-angle-text" id="dogezaAngleText">0°</div>
+        </div>
+        <div class="dogeza-rank-display" id="dogezaRank">
+          <span class="rank-badge rank-f">F ランク「仁義なき不遜」</span>
+        </div>
+        <input type="range" id="dogezaSlider" min="0" max="110" value="0"
+               class="dogeza-slider" oninput="updateDogeza(this.value)">
+        <div class="dogeza-labels">
+          <span>直立（反省ゼロ）</span>
+          <span>土下座（床直撃）</span>
+        </div>
+        <div class="dogeza-comment" id="dogezaComment">頭を動かしてください。</div>
+      </div>
+    </div>
+
+    <!-- FEATURE 3: Boss Screen -->
+    <div class="feature-card" id="bossCard">
+      <div class="feature-icon">🖥️</div>
+      <div class="feature-tag">STEALTH MODE</div>
+      <h3 class="feature-title">エクセル迷彩（Boss Screen）機能</h3>
+      <p class="feature-desc">
+        上司が背後を通過した瞬間、画面を超難解なマクロ入りスプレッドシートに偽装。
+        <code>Ctrl+Boss</code> で即時発動。
+      </p>
+      <div class="boss-screen-demo">
+        <div class="boss-preview" id="bossPreview">
+          <div class="boss-preview-normal">
+            <span>🐱 猫の動画を再生中...</span>
+            <div style="font-size:0.75rem;margin-top:6px;opacity:0.7;">YouTube • かわいい猫まとめ 2024</div>
+          </div>
+        </div>
+        <button class="btn-boss" onclick="activateBossScreen()">
+          🚨 上司接近！Boss Screen 発動
+        </button>
+        <div class="boss-hint">ヒント: <kbd>Ctrl</kbd> + <kbd>B</kbd> でも発動</div>
+      </div>
+    </div>
+
+    <!-- FEATURE 4: Ghost Overtime -->
+    <div class="feature-card" id="ghostCard">
+      <div class="feature-icon">👻</div>
+      <div class="feature-tag">AUTO PILOT</div>
+      <h3 class="feature-title">残業偽装：カタカタゴースト</h3>
+      <p class="feature-desc">
+        定時退社後、あたかも猛烈に働いているかのような痕跡をクラウド上に残す。
+        23:45 の自動 LGTM 送信、午前 2:00 のステータス更新まで完全自動化。
+      </p>
+      <div class="ghost-timeline" id="ghostTimeline">
+        <div class="ghost-time-header">
+          <span>👻 今夜のゴーストスケジュール</span>
+          <button class="btn-ghost-start" id="ghostStartBtn" onclick="startGhostMode()">開始</button>
+        </div>
+        <div class="ghost-events" id="ghostEvents">
+          <div class="ghost-event pending" data-time="18:00">
+            <span class="ghost-event-time">18:00</span>
+            <span class="ghost-event-desc">定時退社（本人）</span>
+            <span class="ghost-event-status">⏳</span>
+          </div>
+          <div class="ghost-event pending" data-time="19:30">
+            <span class="ghost-event-time">19:30</span>
+            <span class="ghost-event-desc">Slack「取り込み中」→「集中中」更新</span>
+            <span class="ghost-event-status">⏳</span>
+          </div>
+          <div class="ghost-event pending" data-time="21:15">
+            <span class="ghost-event-time">21:15</span>
+            <span class="ghost-event-desc">GitHubに空白行のPR自動送信</span>
+            <span class="ghost-event-status">⏳</span>
+          </div>
+          <div class="ghost-event pending" data-time="23:45">
+            <span class="ghost-event-time">23:45</span>
+            <span class="ghost-event-desc">LGTM コメント自動投稿 🚀</span>
+            <span class="ghost-event-status">⏳</span>
+          </div>
+          <div class="ghost-event pending" data-time="02:00">
+            <span class="ghost-event-time">02:00</span>
+            <span class="ghost-event-desc">ステータス「集中スペース」に更新</span>
+            <span class="ghost-event-status">⏳</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== KPI ===== -->
+<section class="section section-dark" id="kpi">
+  <div class="section-label" style="color:#00ff88;">SUCCESS METRICS</div>
+  <h2 class="section-title" style="color:white;">プロジェクト成功基準 KPI</h2>
+  <p class="section-sub" style="color:#aaa;">すべて当社独自の調査方法（n=1・本人申告）に基づきます。</p>
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-icon">🤢</div>
+      <div class="kpi-value" data-target="80">0<span>%</span></div>
+      <div class="kpi-label">胃潰瘍発生率 前年比減</div>
+      <div class="kpi-bar-wrap"><div class="kpi-bar" data-width="80"></div></div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-icon">🏃</div>
+      <div class="kpi-value" data-target="94.5">0<span>%</span></div>
+      <div class="kpi-label">平均定時退社率達成</div>
+      <div class="kpi-bar-wrap"><div class="kpi-bar" data-width="94.5"></div></div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-icon">😇</div>
+      <div class="kpi-value" data-target="100">0<span>%</span></div>
+      <div class="kpi-label">「自分のせいじゃない感」充足度</div>
+      <div class="kpi-bar-wrap"><div class="kpi-bar" data-width="100"></div></div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-icon">⚾</div>
+      <div class="kpi-value" data-target="92">0<span>%</span></div>
+      <div class="kpi-label">「それ仕様です」打率</div>
+      <div class="kpi-bar-wrap"><div class="kpi-bar" data-width="92"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SCHEDULE ===== -->
+<section class="section" id="schedule">
+  <div class="section-label">ROADMAP</div>
+  <h2 class="section-title">開発スケジュール</h2>
+  <p class="section-sub">マイルストーンはあくまで「努力目標」です。</p>
+  <div class="schedule-list">
+    <div class="schedule-item" onclick="toggleSchedule(this)">
+      <div class="schedule-phase">PHASE 1</div>
+      <div class="schedule-info">
+        <div class="schedule-title">来週から本気出す</div>
+        <div class="schedule-desc">要件定義を眺めて「うーん」と唸るフェーズ。コーヒーが主な成果物。</div>
+      </div>
+      <div class="schedule-status status-doing">進行中</div>
+    </div>
+    <div class="schedule-item" onclick="toggleSchedule(this)">
+      <div class="schedule-phase">PHASE 2</div>
+      <div class="schedule-info">
+        <div class="schedule-title">納期直前の奇跡</div>
+        <div class="schedule-desc">レッドブルを燃料に、仕様の8割を削って帳尻を合わせるフェーズ。</div>
+      </div>
+      <div class="schedule-status status-pending">予定</div>
+    </div>
+    <div class="schedule-item" onclick="toggleSchedule(this)">
+      <div class="schedule-phase">PHASE 3</div>
+      <div class="schedule-info">
+        <div class="schedule-title">リリース＆祈祷</div>
+        <div class="schedule-desc">本番環境にデプロイして全員で祈るフェーズ。お守り必須。</div>
+      </div>
+      <div class="schedule-status status-pending">未定</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PRICING ===== -->
+<section class="section section-alt" id="pricing">
+  <div class="section-label">PRICING</div>
+  <h2 class="section-title">料金プラン</h2>
+  <p class="section-sub">どのプランも「上司への謝罪コスト」より圧倒的にリーズナブルです。</p>
+  <div class="pricing-grid">
+    <div class="pricing-card">
+      <div class="pricing-tier">STARTER</div>
+      <div class="pricing-price">¥980<span>/月</span></div>
+      <div class="pricing-sub">主任・担当者向け</div>
+      <ul class="pricing-features">
+        <li>✅ Ex-Cuse エンジン（レベル1-3）</li>
+        <li>✅ Boss Screen 基本機能</li>
+        <li>✅ カタカタゴースト（週5回）</li>
+        <li>❌ 土下座シミュレーター</li>
+        <li>❌ 履歴自己融解機能</li>
+      </ul>
+      <button class="btn-pricing" onclick="show503()">始める</button>
+    </div>
+    <div class="pricing-card pricing-popular">
+      <div class="pricing-popular-badge">🔥 人気No.1</div>
+      <div class="pricing-tier">PROFESSIONAL</div>
+      <div class="pricing-price">¥4,980<span>/月</span></div>
+      <div class="pricing-sub">中間管理職向け（田中 責任 氏推奨）</div>
+      <ul class="pricing-features">
+        <li>✅ Ex-Cuse エンジン（フル）</li>
+        <li>✅ Boss Screen + 気配検知</li>
+        <li>✅ カタカタゴースト（無制限）</li>
+        <li>✅ 土下座シミュレーター Sランク解放</li>
+        <li>✅ 履歴自己融解機能</li>
+      </ul>
+      <button class="btn-pricing btn-pricing-primary" onclick="show503()">今すぐ炎上回避</button>
+    </div>
+    <div class="pricing-card">
+      <div class="pricing-tier">ENTERPRISE</div>
+      <div class="pricing-price">要相談<span></span></div>
+      <div class="pricing-sub">部長以上・役員向け</div>
+      <ul class="pricing-features">
+        <li>✅ 全機能 + 優先サポート</li>
+        <li>✅ 部門単位の責任拡散分析</li>
+        <li>✅ 取締役会用言い訳テンプレ</li>
+        <li>✅ 専任「火消しSE」アサイン</li>
+        <li>✅ オンプレ版（エアギャップ対応）</li>
+      </ul>
+      <button class="btn-pricing" onclick="show503()">営業に問い合わせ</button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TESTIMONIALS ===== -->
+<section class="section" id="testimonials">
+  <div class="section-label">TESTIMONIALS</div>
+  <h2 class="section-title">ユーザーの声</h2>
+  <div class="testimonial-grid">
+    <div class="testimonial-card">
+      <div class="testimonial-quote">"太陽フレア言い訳を使ったら、部長が「それは仕方ないね」と頷いてくれました。科学の力は偉大です。"</div>
+      <div class="testimonial-user">
+        <div class="testimonial-avatar">🧑‍💼</div>
+        <div>
+          <div class="testimonial-name">田中 責任 氏</div>
+          <div class="testimonial-role">中間管理職 / 34歳 / 常に詰められる側</div>
+        </div>
+      </div>
+      <div class="testimonial-stars">★★★★★</div>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-quote">"Boss Screenのおかげで、業務時間中に見ていた競馬中継がバレませんでした。胃が痛くなくなりました。"</div>
+      <div class="testimonial-user">
+        <div class="testimonial-avatar">👨‍🦳</div>
+        <div>
+          <div class="testimonial-name">佐藤 逃避 氏</div>
+          <div class="testimonial-role">シニアエンジニア / 41歳 / 週3リモート</div>
+        </div>
+      </div>
+      <div class="testimonial-stars">★★★★★</div>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-quote">"カタカタゴーストが深夜にLGTMを送り続けた結果、「あの人いつ寝てるの？」と社内で伝説になりました。"</div>
+      <div class="testimonial-user">
+        <div class="testimonial-avatar">👩‍💻</div>
+        <div>
+          <div class="testimonial-name">鈴木 無限 氏</div>
+          <div class="testimonial-role">フロントエンドエンジニア / 28歳</div>
+        </div>
+      </div>
+      <div class="testimonial-stars">★★★★★</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="footer-logo">🙇 SHIN-DOGEZA Cloud™</div>
+  <div class="footer-tagline">「謝らない未来へ。」</div>
+  <div class="footer-links">
+    <a href="#" onclick="show503()">利用規約</a>
+    <a href="#" onclick="show503()">プライバシーポリシー</a>
+    <a href="#" onclick="show503()">特定商取引法に基づく表記</a>
+    <a href="#" onclick="show503()">採用情報</a>
+    <a href="#" onclick="show503()">お問い合わせ</a>
+  </div>
+  <div class="footer-disclaimer">
+    ※ 本サービスは架空のプロダクトです。実際の業務での使用により生じたいかなる損害・炎上・降格・窓際配置についても、
+    当社は一切の責任を負いません（Ex-Cuse エンジンで対応してください）。<br>
+    ※ 月曜 9:00-10:00 のシステム障害は仕様です。<br>
+    © 2024 SHIN-DOGEZA Cloud, Inc. All wrongs reserved.
+  </div>
+</footer>
+
+<!-- ===== BOSS SCREEN OVERLAY ===== -->
+<div id="bossOverlay" style="display:none;position:fixed;inset:0;z-index:9998;flex-direction:column;">
+  <div class="excel-header">
+    <span class="excel-title">📊 Q4_予算計画_最終版_確定_v3_これが本当の最終版.xlsx - Microsoft Excel</span>
+    <div style="display:flex;gap:4px;">
+      <button class="excel-close" onclick="closeBossScreen()">─</button>
+      <button class="excel-close" onclick="closeBossScreen()">□</button>
+      <button class="excel-close" style="background:rgba(255,0,0,0.7);" onclick="closeBossScreen()">✕</button>
+    </div>
+  </div>
+  <div class="excel-toolbar">
+    <span>ファイル</span><span>ホーム</span><span>挿入</span><span>ページレイアウト</span>
+    <span>数式</span><span>データ</span><span>校閲</span><span>表示</span><span>開発</span>
+  </div>
+  <div class="excel-toolbar" style="background:#fff;border-bottom:2px solid #217346;">
+    <span style="background:#e8e8e8;padding:2px 8px;border-radius:3px;">B14</span>
+    <span style="flex:1;font-family:monospace;">fx</span>
+    <span style="font-family:monospace;color:#1a56c4;">=IFERROR(VLOOKUP(A14,予算マスタ!$A:$Z,MATCH(B$1,予算マスタ!$A$1:$Z$1,0),FALSE)*IF(OR(C14="特別",D14>1000000),1.15,1),"")</span>
+  </div>
+  <div class="excel-body">
+    <table class="excel-table" id="excelTable"></table>
+  </div>
+  <div class="excel-statusbar">
+    <span>準備完了</span>
+    <span>セル: B14</span>
+    <span id="excelCalc">平均: 2,847,293</span>
+    <span>合計: 341,675,160</span>
+    <span style="margin-left:auto;">100%</span>
+  </div>
+</div>
+
+<!-- ===== ESCAPE OVERLAY ===== -->
+<div id="escapeOverlay">
+  <div class="escape-content">
+    <div class="escape-bg-text">🌿</div>
+    <h2>現実から脱出しました</h2>
+    <p>すべてのウィンドウを閉じ、壁紙を「デフォルトの草原」に変更しました。<br>
+    深呼吸して、3分後にまた現実に戻ってきてください。</p>
+    <div style="font-size:0.8rem;color:#5d8a6e;margin-bottom:20px;font-family:monospace;">
+      ✅ ブラウザ全タブ: 閉鎖完了<br>
+      ✅ Slack通知: 無音化完了<br>
+      ✅ 上司のメール: <overlap>
+      ✅ 上司のメール: 
+</overlap>
+<continue>
+未読のまま封印完了<br>
+      ✅ 壁紙: 草原 (default_meadow.jpg) 設定完了
+    </div>
+    <button class="escape-btn" onclick="closeEscape()">現実に戻る（推奨しない）</button>
+  </div>
+</div>
+
+<!-- ===== 503 OVERLAY ===== -->
+<div id="overlay503" style="display:none;position:fixed;inset:0;z-index:10000;background:linear-gradient(135deg,#1a1a2e,#16213e);color:#e0e0e0;flex-direction:column;align-items:center;justify-content:center;font-family:'Courier New',monospace;">
+  <div style="font-size:8rem;margin-bottom:20px;">😴</div>
+  <div style="font-size:3rem;font-weight:bold;color:#e74c3c;margin-bottom:10px;">503 Service Unavailable</div>
+  <div style="font-size:1.2rem;color:#95a5a6;margin-bottom:30px;text-align:center;max-width:600px;">
+    このサービスは現在「出社したくない」ため利用できません。<br>
+    月曜日 09:00〜10:00 は共感性設計により意図的に停止しています。
+  </div>
+  <div style="background:rgba(255,255,255,0.05);border:1px solid #444;border-radius:12px;padding:20px 40px;margin-bottom:30px;text-align:left;font-size:0.85rem;color:#7f8c8d;">
+    <div style="color:#e74c3c;margin-bottom:8px;">Error Log:</div>
+    <div>timestamp: Monday 09:03:14 JST</div>
+    <div>service: shin-dogeza-cloud</div>
+    <div>reason: EXISTENTIAL_DREAD_THRESHOLD_EXCEEDED</div>
+    <div>retry_after: 10:00:00 (または気力が回復次第)</div>
+    <div style="margin-top:8px;color:#f39c12;">Suggestion: 深呼吸してコーヒーを飲んでください。</div>
+  </div>
+  <button onclick="close503()" style="background:#e74c3c;color:white;border:none;padding:12px 32px;border-radius:8px;font-size:1rem;cursor:pointer;font-family:inherit;">
+    それでも続ける（自己責任）
+  </button>
+</div>
+
+<!-- ===== DOGEZA MODAL ===== -->
+<div id="dogezaModal" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.85);align-items:center;justify-content:center;">
+  <div style="background:white;border-radius:20px;padding:40px;max-width:500px;width:90%;text-align:center;position:relative;">
+    <button onclick="closeDogezaModal()" style="position:absolute;top:15px;right:15px;background:none;border:none;font-size:1.5rem;cursor:pointer;">✕</button>
+    <div style="font-size:3rem;margin-bottom:10px;">🎥</div>
+    <h3 style="color:#2c3e50;margin-bottom:15px;">AI土下座シミュレーター</h3>
+    <div id="dogezaVideoArea" style="background:#1a1a2e;border-radius:12px;padding:30px;margin-bottom:20px;position:relative;min-height:180px;display:flex;align-items:center;justify-content:center;flex-direction:column;">
+      <div style="font-size:4rem;" id="dogezaEmoji">😶</div>
+      <div id="dogezaAngleDisplay" style="color:#00ff88;font-family:monospace;font-size:1.5rem;margin-top:10px;">-- °</div>
+      <div id="dogezaLabel" style="color:#95a5a6;font-size:0.85rem;margin-top:5px;">カメラを起動してください</div>
+    </div>
+    <div style="display:flex;gap:10px;margin-bottom:15px;">
+      <button onclick="startDogezaSim(15)" style="flex:1;padding:10px;border:2px solid #e74c3c;background:none;color:#e74c3c;border-radius:8px;cursor:pointer;font-size:0.85rem;">会釈<br>15°</button>
+      <button onclick="startDogezaSim(30)" style="flex:1;padding:10px;border:2px solid #f39c12;background:none;color:#f39c12;border-radius:8px;cursor:pointer;font-size:0.85rem;">お辞儀<br>30°</button>
+      <button onclick="startDogezaSim(45)" style="flex:1;padding:10px;border:2px solid #27ae60;background:none;color:#27ae60;border-radius:8px;cursor:pointer;font-size:0.85rem;">最敬礼<br>45°</button>
+      <button onclick="startDogezaSim(90)" style="flex:1;padding:10px;border:2px solid #8e44ad;background:#8e44ad;color:white;border-radius:8px;cursor:pointer;font-size:0.85rem;">土下座<br>90°+</button>
+    </div>
+    <div id="dogezaResult" style="min-height:50px;padding:10px;border-radius:8px;font-size:0.9rem;"></div>
+  </div>
+</div>
+
+<!-- ===== PRICING MODAL ===== -->
+<div id="pricingModal" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.85);align-items:center;justify-content:center;overflow-y:auto;">
+  <div style="background:white;border-radius:20px;padding:40px;max-width:420px;width:90%;text-align:center;position:relative;margin:20px auto;">
+    <button onclick="closePricingModal()" style="position:absolute;top:15px;right:15px;background:none;border:none;font-size:1.5rem;cursor:pointer;">✕</button>
+    <div style="font-size:3rem;margin-bottom:10px;">💳</div>
+    <h3 style="color:#2c3e50;margin-bottom:5px;">お申し込み確認</h3>
+    <p id="planModalName" style="color:#27ae60;font-weight:bold;font-size:1.2rem;margin-bottom:20px;"></p>
+    <div style="background:#fffbeb;border:2px dashed #f39c12;border-radius:12px;padding:15px;margin-bottom:20px;font-size:0.85rem;color:#7d6608;text-align:left;">
+      <div style="font-weight:bold;margin-bottom:8px;">⚠️ 重要な確認事項</div>
+      <div>□ 本サービスは架空です</div>
+      <div>□ 実際の謝罪効果は保証しません</div>
+      <div>□ 胃潰瘍は別途医師にご相談ください</div>
+      <div>□ 上司への言い訳は自己責任で使用してください</div>
+      <div style="margin-top:8px;color:#e74c3c;">※ 月曜9時台のみシステムが出社拒否します</div>
+    </div>
+    <button onclick="confirmPlan()" style="width:100%;padding:15px;background:linear-gradient(135deg,#27ae60,#2ecc71);color:white;border:none;border-radius:12px;font-size:1rem;font-weight:bold;cursor:pointer;margin-bottom:10px;">
+      申し込む（現実は変わりません）
+    </button>
+    <button onclick="closePricingModal()" style="width:100%;padding:12px;background:none;border:2px solid #bdc3c7;color:#7f8c8d;border-radius:12px;font-size:0.9rem;cursor:pointer;">
+      やっぱり持ち帰る
+    </button>
+  </div>
+</div>
+
+<!-- ===== EXCUSE RESULT MODAL ===== -->
+<div id="excuseModal" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.85);align-items:center;justify-content:center;">
+  <div style="background:white;border-radius:20px;padding:40px;max-width:560px;width:90%;text-align:center;position:relative;">
+    <button onclick="closeExcuseModal()" style="position:absolute;top:15px;right:15px;background:none;border:none;font-size:1.5rem;cursor:pointer;">✕</button>
+    <div style="font-size:3rem;margin-bottom:10px;">🤖</div>
+    <h3 style="color:#2c3e50;margin-bottom:5px;">Ex-Cuse エンジン 生成完了</h3>
+    <div style="background:#f8f9fa;border-left:4px solid #27ae60;border-radius:8px;padding:20px;margin:20px 0;text-align:left;">
+      <div style="font-size:0.75rem;color:#95a5a6;margin-bottom:8px;font-family:monospace;">GENERATED_EXCUSE_v4.2 ──────────</div>
+      <div id="excuseResultText" style="font-size:1rem;color:#2c3e50;line-height:1.7;"></div>
+    </div>
+    <div style="display:flex;gap:10px;">
+      <button onclick="copyExcuse()" style="flex:1;padding:12px;background:linear-gradient(135deg,#3498db,#2980b9);color:white;border:none;border-radius:8px;cursor:pointer;font-size:0.9rem;">
+        📋 コピーして使う
+      </button>
+      <button onclick="generateExcuse()" style="flex:1;padding:12px;background:linear-gradient(135deg,#27ae60,#2ecc71);color:white;border:none;border-radius:8px;cursor:pointer;font-size:0.9rem;">
+        🔄 再生成
+      </button>
+    </div>
+    <div id="copyConfirm" style="margin-top:10px;color:#27ae60;font-size:0.85rem;min-height:20px;"></div>
+  </div>
+</div>
+
+  <script src="js/app.js"></script>
+
+</body>
+</html>
